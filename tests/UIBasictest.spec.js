@@ -68,5 +68,6 @@ test.only('Ui dropdown radio checkbox',  async({page}) => {
     await expect(blinklink).toBeVisible();
     // to check if the link has the class "blinkingText"
     await expect(blinklink).toHaveAttribute('class', 'blinkingText'); 
+    expect(await page.title()).toBe('LoginPage Practise | Rahul Shetty Academy');
 
 })
