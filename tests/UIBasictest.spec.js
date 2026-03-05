@@ -47,7 +47,7 @@ test('Browser context-validating Error login',  async({page}) => {
 
 })
 
-test('Ui dropdown radio checkbox',  async({page}) => {
+test.only('Ui dropdown radio checkbox',  async({page}) => {
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     const userName = page.locator('#username');
     const passWord = page.locator("[type='password']");
