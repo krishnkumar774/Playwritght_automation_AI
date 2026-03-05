@@ -47,7 +47,7 @@ test('Browser context-validating Error login',  async({page}) => {
 
 })
 
-test.only('Ui dropdown radio checkbox',  async({page}) => {
+test('Ui dropdown radio checkbox',  async({page}) => {
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     const userName = page.locator('#username');
     const passWord = page.locator("[type='password']");
@@ -69,4 +69,6 @@ test.only('Ui dropdown radio checkbox',  async({page}) => {
     // to check if the link has the class "blinkingText"
     await expect(blinklink).toHaveAttribute('class', 'blinkingText'); 
     expect(await page.title()).toBe('LoginPage Practise |Rahul Shetty Academy');
+// delected .only
+    
 })
