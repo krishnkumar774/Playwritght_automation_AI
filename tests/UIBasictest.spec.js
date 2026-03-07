@@ -81,7 +81,7 @@ test.only('child window handling',  async({browser}) => {
     
    const [newPage] = await Promise.all(
     [
-    context.waitForEvent('page'), // listenn for any new page pending promise,rejeected promise ,Fullfilled promise
+    page.context().waitForEvent('page'), // listen for new page
     blinklink.click() // new page open  // above both are in parallel so we need to use promise.all to wait for both the events to complete before proceeding with the test
 ]) 
 const text=await newPage.locator('.red').textContent(); //action on child page
