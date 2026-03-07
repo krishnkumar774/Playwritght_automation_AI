@@ -71,3 +71,25 @@ test('Ui dropdown radio checkbox',  async({page}) => {
     expect(await page.title()).toBe('LoginPage Practise |Rahul Shetty Academy');
 // delected .only / this is just for test ///add develop brach
 })
+
+
+test.only('child window handling',  async({browser}) => {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+    const blinklink =page.locator('[href*="documents-request"]');
+    
+   const [newPage] = await Promise.all(
+    [
+    context.waitForEvent('page'), // listenn for any new page pending promise,rejeected promise ,Fullfilled promise
+    blinklink.click() // new page open  // above both are in parallel so we need to use promise.all to wait for both the events to complete before proceeding with the test
+]) 
+const text=await newPage.locator('.red').textContent(); //action on child page
+expect(text).toContain('mentor@rahulshettyacademy.com')
+const userid = text.split('@')[0].split(' ')[1];
+console.log(userid);
+
+await page.pause(); // to pause the test execution and inspect the state of the page at that moment, allowing you to debug and analyze the test flow effectively.
+await(page.locator('#username').fill(userid)); // action on parent page
+
+})
