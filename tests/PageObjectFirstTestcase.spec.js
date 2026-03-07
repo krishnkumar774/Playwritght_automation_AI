@@ -1,12 +1,16 @@
 const {test, expect} = require('@playwright/test');
-const {LoginPage} =require('../pageobjects/LoginPage');
+//const {LoginPage} =require('../pageobjects/LoginPage');
+//const {DocumentPage} =require('../pageobjects/DocumentPage');
+const {PageObjectManager} =require('../pageobjects/PageObjectManager');
 
 test('Ui dropdown radio checkbox',  async({page}) => {
-    const userName = 'rahulshettyacademy';
-    const passWord = 'learning';
-    const loginPage = new LoginPage(page);
+    const pageObjectManager = new PageObjectManager(page);
+    const username = 'rahulshettyacademy';
+    const password = 'learning';
+    const loginPage = pageObjectManager.getLoginPage();
+    const documentPage = pageObjectManager.getDocumentPage();
     await loginPage.gotoUrl(page);
-    await loginPage.login('userName','passWord');
+    await loginPage.login(username,password);
     await loginPage.radioButton.nth(1).click();
     expect(loginPage.radioButton.nth(1)).toBeChecked();
     expect(loginPage.radioButton.nth(0)).not.toBeChecked();
@@ -19,9 +23,7 @@ test('Ui dropdown radio checkbox',  async({page}) => {
     await expect(loginPage.blinklink).toHaveAttribute('class', 'blinkingText'); 
     expect(await page.title()).toBe('LoginPage Practise | Rahul Shetty Academy');
     
-    await loginPage.childWindowBlinkTest();
-
-
-
+    await documentPage.redMessage();
+    await documentPage.mainpageLoin(username,password);
 
 })
