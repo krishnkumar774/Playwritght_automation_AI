@@ -2,15 +2,15 @@ const {test, expect} = require('@playwright/test');
 //const {LoginPage} =require('../pageobjects/LoginPage');
 //const {DocumentPage} =require('../pageobjects/DocumentPage');
 const {PageObjectManager} =require('../pageobjects/PageObjectManager');
+//jason -> string -> js object 
+const dataSet=JSON.parse(JSON.stringify(require('../utils/PageobjectTestData.json')));
 
 test('Ui dropdown radio checkbox',  async({page}) => {
     const pageObjectManager = new PageObjectManager(page);
-    const username = 'rahulshettyacademy';
-    const password = 'learning';
     const loginPage = pageObjectManager.getLoginPage();
     const documentPage = pageObjectManager.getDocumentPage();
     await loginPage.gotoUrl(page);
-    await loginPage.login(username,password);
+    await loginPage.login(dataSet.username, dataSet.password);
     await loginPage.radioButton.nth(1).click();
     expect(loginPage.radioButton.nth(1)).toBeChecked();
     expect(loginPage.radioButton.nth(0)).not.toBeChecked();
@@ -24,6 +24,6 @@ test('Ui dropdown radio checkbox',  async({page}) => {
     expect(await page.title()).toBe('LoginPage Practise | Rahul Shetty Academy');
     
     await documentPage.redMessage();
-    await documentPage.mainpageLoin(username,password);
+    await documentPage.mainpageLogin(dataSet.username,dataSet.password);
 
 })

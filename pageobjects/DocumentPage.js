@@ -21,7 +21,7 @@ async redMessage()
     console.log(userid);
     await this.userName.fill(userid);
 }
-async mainpageLoin(username,password)
+async mainpageLogin(username,password)
 {
     await this.userName.fill(username);
     await this.passWord.fill(password);
