@@ -20,7 +20,7 @@ test.skip('second test',  async({browser}) => {
    expect(await page.title()).toBe('Rahul Shetty Academy');
 })
 
-test('Browser context-validating Error login',  async({page}) => {
+test('@web Browser context-validating Error login',  async({page}) => {
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     const userName = page.locator('#username');
     const passWord = page.locator("[type='password']");
@@ -73,7 +73,7 @@ test('Ui dropdown radio checkbox',  async({page}) => {
 })
 
 
-test('child window handling',  async({browser}) => {
+test('@web child window handling',  async({browser}) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');

@@ -5,7 +5,7 @@ const {PageObjectManager} =require('../pageobjects/PageObjectManager');
 //jason -> string -> js object 
 const dataSet=JSON.parse(JSON.stringify(require('../utils/PageobjectTestData.json')));
 
-test('Ui dropdown radio checkbox',  async({page}) => {
+test('@web Ui dropdown radio checkbox',  async({page}) => {
     const pageObjectManager = new PageObjectManager(page);
     const loginPage = pageObjectManager.getLoginPage();
     const documentPage = pageObjectManager.getDocumentPage();
