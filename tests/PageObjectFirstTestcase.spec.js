@@ -26,4 +26,6 @@ test('Ui dropdown radio checkbox',  async({page}) => {
     await documentPage.redMessage();
     await documentPage.mainpageLogin(dataSet.username,dataSet.password);
 
+//test file will trigger parallel
+//individual test in the file will run in  sequentially
 })

@@ -4,14 +4,14 @@ const { title } = require('node:process');
 /*test.only('first test',  async({page}) => {
     await page.goto('https://www.google.com/');
 }) *////
-
+test.describe.configure({ mode: 'serial' }) // this will run all the test in serial
 test('first test',  async({page}) => {
     await page.goto('https://www.google.com/');
     console.log(await page.title());
     expect(await page.title()).toBe('Google');
 })
 
-test('second test',  async({browser}) => {
+test.skip('second test',  async({browser}) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto('https://rahulshettyacademy.com/');
@@ -73,7 +73,7 @@ test('Ui dropdown radio checkbox',  async({page}) => {
 })
 
 
-test.only('child window handling',  async({browser}) => {
+test('child window handling',  async({browser}) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
