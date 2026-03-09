@@ -1,0 +1,40 @@
+{
+  "servers": {
+    "playwright": {
+      "type": "stdio",
+      "sandboxEnabled": true,
+      "command": "npx",
+      "cwd": "${input:serverName}",
+      "args": [
+        "@playwright/mcp@0.0.68"
+      ],
+      "dev": {
+        "watch": "${input:watchFiles}",
+        "debug": {
+          "type": "node"
+        }
+      },
+      "env": {}
+    },
+    "playwright-test": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "playwright",
+        "run-test-mcp-server"
+      ]
+    }
+  },
+  "inputs": [
+    {
+      "id": "serverName",
+      "type": "promptString",
+      "description": "Server Name"
+    },
+    {
+      "id": "watchFiles",
+      "type": "promptString",
+      "description": "Watch Files"
+    }
+  ]
+}
