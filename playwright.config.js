@@ -8,7 +8,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   workers: 3,
-  retries: 2,
+  retries: 1,
   timeout: 10 * 1000,
   expect: {
     timeout: 10000
@@ -16,10 +16,11 @@ export default defineConfig({
   reporter: 'html',
 use: {
 browserName: 'chromium',
-headless: true,
-screenshot: 'only-on-failure',
+headless: false,
+ignoreHTTPSErrors: true,
+screenshot: 'only-on-failure', // has on, off and on-first-retry options
 video: 'retain-on-failure',
-trace: 'retain-on-failure', 
+trace: 'retain-on-failure',  // has on ,off and on-first-retry options
   }
 
 
